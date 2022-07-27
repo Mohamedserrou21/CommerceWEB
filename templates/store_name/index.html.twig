@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StoreName index{% endblock %}
+
+{% block body %}
+    <h1>StoreName index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>About</th>
+                <th>Description</th>
+                <th>Logo</th>
+                <th>Carsoule1</th>
+                <th>Carsoule2</th>
+                <th>Carsoule3</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for store_name in store_names %}
+            <tr>
+                <td>{{ store_name.id }}</td>
+                <td>{{ store_name.name }}</td>
+                <td>{{ store_name.about }}</td>
+                <td>{{ store_name.description }}</td>
+                <td>{{ store_name.logo }}</td>
+                <td>{{ store_name.carsoule1 }}</td>
+                <td>{{ store_name.carsoule2 }}</td>
+                <td>{{ store_name.carsoule3 }}</td>
+                <td>{{ store_name.updatedAt ? store_name.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_store_name_show', {'id': store_name.id}) }}">show</a>
+                    <a href="{{ path('app_store_name_edit', {'id': store_name.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_store_name_new') }}">Create new</a>
+{% endblock %}

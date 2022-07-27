@@ -1,0 +1,85 @@
+{% block title %}{% endblock %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Login ecommerceweb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{asset('css/main.css')}}"/>
+
+
+{% block body %}
+	<section class="banner">
+		<h2>Connectez-Vous
+			<a href="{{ path('app_index') }}" style='color:crimson;font-size:30px;padding:8px 12px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;text-decoration:none;'>
+				<span style=" color:crimson">
+					WebCommerce
+				</span>
+			</a>
+		</h2>
+		<div class="card-container">
+			<div
+				class="card-img"><!-- image here -->
+			</div>
+
+			<div class="card-content">
+				<h3>New Member ?
+					<a href="{{ path('app_register') }}" style='color:crimson;font-size:18px;padding:8px 12px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;text-decoration:none;'>cree compte</a>
+				</h3>
+				<form method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3">
+							You are logged in as
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+					{% endif %}
+					<div class="form-row">
+
+
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" plaeholder=" entrez votre email" class="form-control" autocomplete="email" required autofocus>
+
+
+					</div>
+
+					<div class="form-row">
+
+
+						<input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" autocomplete="current-password" required>
+
+
+					</div>
+
+					<input
+					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					{#
+																																																																																																																																																																																												        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+																																																																																																																																																																																												        See https://symfony.com/doc/current/security/remember_me.html
+																																																																																																																																																																																												
+																																																																																																																																																																																												        <div class="checkbox mb-3">
+																																																																																																																																																																																												            <label>
+																																																																																																																																																																																												                <input type="checkbox" name="_remember_me"> Remember me
+																																																																																																																																																																																												            </label>
+																																																																																																																																																																																												        </div>
+																																																																																																																																																																																												    #}
+
+					<div class="form-row">
+
+						<input type="submit" value=" Login" class="btn"></input>
+
+				</div>
+			</input>
+		</form>
+		<div class="sign-txt">Not yet member?
+			<a href="#" style='color:crimson;font-size:15px;padding:8px 12px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;text-decoration:none;'>Forgot Password?</a>
+
+
+		</div>
+
+
+	</section>
+</div>
+<script src="login.js"></script>{% endblock %}

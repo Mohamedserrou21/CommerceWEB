@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Complete Responsive Pet Food Website Design Tutorial</title>
+
+		<!-- font awesome cdn link  -->
+		<link
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+		<!-- custom css file link  -->
+		<link rel="stylesheet" href="css/dash-client.css">
+
+	</head>
+	<body>
+
+		<!-- header section starts  -->
+
+		<header class="header">
+
+			<a href="{{ path('app_dash_client') }}" class="logo">
+				<i class="fas fa-shopping-cart"></i>
+				Web Commerce
+			</a>
+
+			<nav class="navbar">
+
+				<a href="#about">about</a>
+				<a href="#shop">Stores</a>
+
+				<a href="#plan">plan</a>
+				<a href="#contact">contact</a>
+			</nav>
+
+			<div class="icons">
+				<div class="fas fa-bars" id="menu-btn"></div>
+				<a href="#" style="color:crimson" class="fas fa-shopping-cart">
+					Panier</a>
+				<div class="fas fa-user" id="login-btn">
+					{% if app.user %}
+
+						{{ app.user.userIdentifier }}
+
+					{% endif %}
+				</div>
+			</div>
+
+			<form action="" class="login-form">
+
+
+				<div class="links">
+					<a href="{{ path('app_logout') }}">Se deconnecter</a>
+
+				</div>
+			</form>
+
+		</header>
+
+		<!-- header section ends -->
+
+		<!-- home section starts  -->
+
+		<section class="home" id="home">
+
+			<div class="content">
+				<h3>
+					<span>hi
+
+					</span>
+					welcome to WebCommerce
+
+				</h3>
+				<a href="#" class="btn">shop now</a>
+			</div>
+
+			<img src="image/bottom_wave.png" class="wave" alt="">
+
+		</section>
+
+		<!-- home section ends -->
+
+		<!-- about section starts  -->
+
+		<section class="about" id="about">
+
+			<div class="image">
+				<img src="image/16544.jpg" alt="">
+			</div>
+
+			<div class="content">
+				<h3>Web
+					<span>Commerce</span>
+					Store</h3>
+				<p>Trouvez içi les meilleures magasin avec des parfaits promotions dans notre plateforme et acheter vos produits tous simplement</p>
+				<a href="#" class="btn">Decouvrir les stores</a>
+			</div>
+
+		</section>
+
+		<!-- about section ends -->
+
+		<!-- dog and cat food banner section starts -->
+		<div class="cat-food">
+
+			<div class="content">
+				<h3>
+					<span>WebCommerce</span>
+					Delivery
+				</h3>
+				<p>Livraison partout avec les services disponibles dans WebCommerce
+				</p>
+				<div class="amount">Livraison Gratuit</div>
+				<a href="#" class="btn">Decouvrir les stores</a>
+			</div>
+
+			<div class="image">
+				<img src="image/3333449.jpg" ="">
+			</div>
+
+		</div>
+
+		<div class="dog-food">
+
+			<div class="image">
+				<img src="image/18320004.jpg" alt="">
+			</div>
+
+			<div class="content">
+				<h3>
+					<span>Achetez vos produits Sur</span>
+					WebCommerce Store</h3>
+				<p>les meilleures magasin avec des parfaits promotions dans notre plateforme et acheter vos produits tous simplement</p>
+				<div class="amount">Promotions $</div>
+				<a href="#" class="btn">Decouvrir les stores</a>
+			</div>
+
+		</div>
+
+
+		<!-- dog and cat food banner section ends -->
+
+		<!-- shop section starts  -->
+
+		<section class="shop" id="shop">
+
+			<h1 class="heading">
+				our
+				<span>
+					Store
+				</span>
+			</h1>
+
+			<div class="box-container">
+				{% for store_name in store_names %}
+					<div class="box">
+						<div class="icons">
+							<a href="#" class="fas fa-shopping-cart"></a>
+
+							<a href="{{ path('app_store_name_show', {'name': store_name.name}) }}" class="fas fa-eye"></a>
+						</div>
+						<div class="image">
+							<img src="{{ vich_uploader_asset(store_name, 'logoFile')}}" alt="">
+						</div>
+						<div class="content">
+							<h3>{{ store_name.name }}</h3>
+
+						</div>
+					</div>
+				{% endfor %}
+
+
+			</div>
+
+		</section>
+
+		<!-- shop section ends -->
+
+		<!-- services section starts  -->
+
+
+		<!-- plan section ends -->
+
+			<section class="contact" id="contact"> <div class="image">
+				<img src="image/join-us.png" alt="">
+			</div>
+
+			<form action="">
+				<h3>contact us</h3>
+				<input type="text" placeholder="your name" class="box">
+				<input type="email" placeholder="your email" class="box">
+				<input type="tumber" placeholder="your number" class="box">
+				<textarea name="" placeholder="your message" id="" cols="30" rows="10"></textarea>
+				<input type="submit" value="send message" class="btn">
+			</form>
+
+		</section>
+
+		<section class="footer">
+
+			<img src="image/top_wave.png" alt="">
+
+			<div class="share">
+				<a href="#" class="btn">
+					<i class="fab fa-facebook-f"></i>
+					facebook
+				</a>
+				<a href="#" class="btn">
+					<i class="fab fa-twitter"></i>
+					twitter
+				</a>
+				<a href="#" class="btn">
+					<i class="fab fa-instagram"></i>
+					instagram
+				</a>
+				<a href="#" class="btn">
+					<i class="fab fa-linkedin"></i>
+					linkedin
+				</a>
+				<a href="#" class="btn">
+					<i class="fab fa-pinterest"></i>
+					pinterest
+				</a>
+			</div>
+
+			<div class="credit">
+				created by
+				<span>
+					mr. web designer
+				</span>
+				| all rights reserved!
+			</div>
+
+		</section>
+
+
+		<!-- custom js file link  -->
+		<script src="js/script.js"></script>
+
+	</body>
+</html>

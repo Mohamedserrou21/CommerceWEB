@@ -1,0 +1,63 @@
+{% block title %}{% endblock %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Registration ecommerceweb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{asset('css/main.css')}}"/>
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<section class="banner">
+		<h2>CREATE YOUR COMPTE NOW
+			<a href="{{ path('app_index') }}" style='color:crimson;font-size:30px;padding:8px 12px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;text-decoration:none;'>
+				<span style=" color:crimson">
+					WebCommerce
+				</span>
+			</a>
+		</h2>
+
+		<div class="card-container">
+			<div
+				class="card-img"><!-- image here -->
+			</div>
+
+			<div class="card-content">
+				<h3>Creat Account
+
+				</h3>
+
+				<form method="post">
+					{{ form_start(registrationForm) }}
+					<div class="form-row">
+
+
+						{{ form_widget(registrationForm.email,{'attr': {'Class': 'form-control' ,'Placeholder': 'Entrez Votre Email'}})
+																																																																																																																																																																																																																																																																																																																																																																																																	}}
+
+						{{ form_widget(registrationForm.plainPassword,{'attr': {'Class': 'form-control' ,'Placeholder': 'Password'}})
+																																																																																																																																																																																																																																																																																																																																																																																											}}
+
+					</div>
+					<div class="form-row">
+
+						{{ form_widget(registrationForm.roles, { 'attr': {'style': 'height: 80px'}})
+																																																																																																																																																																																																																																																																																														}}
+
+
+					</div>
+
+
+					<div class="form-row">
+
+						<input type="submit" value=" register" class="btn"></input>
+					{{ form_end(registrationForm) }}
+				</div>
+
+
+			</form>
+		</div>
+	</div>
+</section></div>{% endblock %}</script>

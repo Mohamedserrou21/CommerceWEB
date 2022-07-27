@@ -1,0 +1,77 @@
+.header {
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.3rem 4%;
+    -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    -webkit-transform: translateY(0rem);
+    transform: translateY(0rem);
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+.header.active {
+    -webkit-transform: translateY(0rem);
+    transform: translateY(0rem);
+}
+
+.header .logo {
+    font-size: 1.5rem;
+    color: #130f40;
+    font-weight: bolder;
+}
+
+.header .logo i {
+    color: crimson;
+}
+
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.header .navbar a:hover {
+    color: crimson;
+}
+
+.header .icons a,
+.header .icons div {
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+    color: #130f40;
+    cursor: pointer;
+}
+
+.header .icons a:hover,
+.header .icons div:hover {
+    color: crimson;
+}
+
+.header .login-form {
+    position: absolute;
+    top: 120%;
+    right: 2rem;
+    width: 35rem;
+    border-radius: 1rem;
+    background: #fff;
+    -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    display: none;
+}
