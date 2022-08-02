@@ -49,12 +49,19 @@ class StoreNameController extends AbstractController
     /**
      * @Route("/{name}/", name="app_store_name_show", methods={"GET"})
      */
-    public function show(StoreName $storeName): Response
+    public function show(StoreName $storeName, StoreNameRepository $storeRepository): Response
     {
         return $this->render('store_name/show.html.twig', [
             'store_name' => $storeName,
+            'produit' =>  $storeName->getProducts(),
+
+            'stores' => $storeRepository->findAll(),
         ]);
     }
+
+
+
+
 
     /**
      * @Route("/{id}/edit", name="app_store_name_edit", methods={"GET", "POST"})
