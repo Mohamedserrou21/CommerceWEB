@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Produits;
+use App\Entity\StoreName;
 use App\Form\ProduitsType;
 use App\Repository\ProduitsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+
 
 /**
  * @Route("/produits")
@@ -47,12 +51,14 @@ class ProduitsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_produits_show", methods={"GET"})
+     * @Route("/details/{id}/", name="app_produits_show", methods={"GET"} , requirements={"id":"\d+"})
+    
      */
     public function show(Produits $produit): Response
     {
         return $this->render('produits/show.html.twig', [
             'produit' => $produit,
+
         ]);
     }
 
@@ -81,7 +87,7 @@ class ProduitsController extends AbstractController
      */
     public function delete(Request $request, Produits $produit, ProduitsRepository $produitsRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->request->get('_token'))) {
             $produitsRepository->remove($produit, true);
         }
 

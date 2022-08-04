@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\StoreName;
 use App\Form\StoreNameType;
 use App\Repository\StoreNameRepository;
+use App\Repository\ProduitsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/store/name")
+ * @Route("/store/name",requirements={"id":"\d+"})
  */
 class StoreNameController extends AbstractController
 {
@@ -47,14 +48,14 @@ class StoreNameController extends AbstractController
     }
 
     /**
-     * @Route("/{name}/", name="app_store_name_show", methods={"GET"})
+     * @Route("/{name}/", name="app_store_name_show", methods={"GET"}, requirements={"id":"\d+"})
      */
-    public function show(StoreName $storeName, StoreNameRepository $storeRepository): Response
+    public function show(StoreName $storeName, StoreNameRepository $storeRepository, ProduitsRepository $produitsRepository): Response
     {
         return $this->render('store_name/show.html.twig', [
             'store_name' => $storeName,
             'produit' =>  $storeName->getProducts(),
-
+            'produits' => $produitsRepository->findAll(),
             'stores' => $storeRepository->findAll(),
         ]);
     }
